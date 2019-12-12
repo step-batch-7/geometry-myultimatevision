@@ -9,6 +9,10 @@ class Line {
   toString() {
     return "Line { x1: 1, y1: 2, x2: 6, y2: 2 }";
   }
+
+  isequalTo(x1) {
+    return x1 == this.x1;
+  }
 }
 
 module.exports = Line;
