@@ -54,5 +54,10 @@ describe("Line", function() {
       const line1 = new Line({ x: -1, y: -1 }, { x: -4, y: -1 });
       assert.strictEqual(line1.length, 3);
     });
+
+    it("should give length  as decimal length if it gets decimal value", function() {
+      const line1 = new Line({ x: 3, y: 1 }, { x: 4, y: 2 });
+      assert.approximately(line1.length, 1.4142135623730951, 1);
+    });
   });
 });
