@@ -15,17 +15,13 @@ describe("Line", function() {
     it("should give true when two lines are equal", function() {
       const line1 = new Line({ x: 1, y: 2 }, { x: 6, y: 2 });
       const line2 = new Line({ x: 1, y: 2 }, { x: 6, y: 2 });
-      const actual = line1.isEqualTo(line2);
-      const expected = true;
-      assert.strictEqual(actual, expected);
+      assert.ok(line1.isEqualTo(line2));
     });
 
     it("should give false when two lines are  not equal", function() {
       const line1 = new Line({ x: 1, y: 2 }, { x: 6, y: 2 });
       const line2 = new Line({ x: 1, y: 3 }, { x: 4, y: 2 });
-      const actual = line1.isEqualTo(line2);
-      const expected = false;
-      assert.strictEqual(actual, expected);
+      assert.ok(!line1.isEqualTo(line2));
     });
 
     it("should give false when two lines are  not instances of Same class", function() {
@@ -34,8 +30,7 @@ describe("Line", function() {
         endA: { x: 1, y: 2 },
         endB: { x: 6, y: 2 }
       });
-      const expected = false;
-      assert.strictEqual(actual, expected);
+      assert.ok(!actual);
     });
   });
 });
