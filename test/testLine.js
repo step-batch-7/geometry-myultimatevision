@@ -13,19 +13,29 @@ describe("Line", function() {
 
   describe("isEqualTo", function() {
     it("should give true when two lines are equal", function() {
-      const line1 = new Line([1, 2], [6, 2]);
-      const line2 = new Line([1, 2], [6, 2]);
+      const line1 = new Line({ x: 1, y: 2 }, { x: 6, y: 2 });
+      const line2 = new Line({ x: 1, y: 2 }, { x: 6, y: 2 });
       const actual = line1.isEqualTo(line2);
       const expected = true;
-      assert.deepStrictEqual(actual, expected);
+      assert.strictEqual(actual, expected);
     });
 
     it("should give false when two lines are  not equal", function() {
-      const line1 = new Line([1, 2], [6, 2]);
-      const line2 = new Line([1, 3], [4, 2]);
+      const line1 = new Line({ x: 1, y: 2 }, { x: 6, y: 2 });
+      const line2 = new Line({ x: 1, y: 3 }, { x: 4, y: 2 });
       const actual = line1.isEqualTo(line2);
-      const expected = true;
-      assert.deepStrictEqual(actual, expected);
+      const expected = false;
+      assert.strictEqual(actual, expected);
+    });
+
+    it("should give false when two lines are  not instances of Same class", function() {
+      const line1 = new Line({ x: 1, y: 2 }, { x: 6, y: 2 });
+      const actual = line1.isEqualTo({
+        endA: { x: 1, y: 2 },
+        endB: { x: 6, y: 2 }
+      });
+      const expected = false;
+      assert.strictEqual(actual, expected);
     });
   });
 });
