@@ -86,4 +86,11 @@ describe("Line", function() {
       assert.isOk(line1.isParallelTo(line2));
     });
   });
+
+  describe("slope", function() {
+    it("should return 0 if line is parallel to x-axis", function() {
+      const line1 = new Line({ x: 0, y: 2 }, { x: 2, y: 2 });
+      assert.strictEqual(line1.slope, 0);
+    });
+  });
 });

@@ -38,11 +38,13 @@ class Line {
     return length;
   }
 
+  get slope() {
+    return (this.endB.y - this.endA.y) / (this.endB.x - this.endA.x);
+  }
+
   isParallelTo(line2) {
     if (this.isEqualTo(line2)) return false;
-    // if (this.endA.y == line2.endA.y && this.endB.y == line2.endB.y) return true;
-    // if (this.endA.x == line2.endA.x && this.endB.x == line2.endB.x) return true;
-    return slopeOf(this) == slopeOf(line2);
+    return this.slope == slopeOf(line2);
   }
 }
 
