@@ -6,8 +6,7 @@ describe("Line", function() {
     it("should give a line when line ends are given", function() {
       const line1 = new Line({ x: 1, y: 2 }, { x: 6, y: 2 });
       const actual = line1.toString();
-      const expected =
-        "Line first end point is (1,2) and another end point is (6,2)";
+      const expected = "Line ((1,2),(6,2))";
       assert.strictEqual(actual, expected);
     });
   });

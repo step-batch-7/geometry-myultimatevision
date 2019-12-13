@@ -9,8 +9,7 @@ class Line {
   }
 
   toString() {
-    return `Line first end point is (${this.endA.x},${this.endA.y}) and another end point is (${this.endB.x},${this.endB.y})`;
-    //return `Line : ((${this.endA.x},${this.endA.y}),(${this.endB.x},${this.endB.y}))`;
+    return `Line ((${this.endA.x},${this.endA.y}),(${this.endB.x},${this.endB.y}))`;
   }
 
   isEqualTo(line2) {
