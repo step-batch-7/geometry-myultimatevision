@@ -35,6 +35,8 @@ class Line {
 
   isParallelTo(line2) {
     if (this.isEqualTo(line2)) return true;
+    if (this.endA.y == line2.endA.y && this.endB.y == line2.endB.y) return true;
+    return false;
   }
 }
 
