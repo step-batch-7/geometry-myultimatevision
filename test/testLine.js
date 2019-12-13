@@ -1,7 +1,7 @@
 const assert = require("assert");
 const Line = require("../src/line");
 
-describe("functionName", function() {
+describe("Line", function() {
   describe("toString", function() {
     it("should give a line when line ends are given", function() {
       const line1 = new Line({ x: 1, y: 2 }, { x: 6, y: 2 });
