@@ -92,5 +92,10 @@ describe("Line", function() {
       const line1 = new Line({ x: 0, y: 2 }, { x: 2, y: 2 });
       assert.strictEqual(line1.slope, 0);
     });
+
+    it("should return infinity if line is parallel to y-axis", function() {
+      const line1 = new Line({ x: 2, y: 0 }, { x: 2, y: 2 });
+      assert.strictEqual(line1.slope, Infinity);
+    });
   });
 });
