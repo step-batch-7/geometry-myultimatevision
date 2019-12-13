@@ -2,6 +2,11 @@ const areEndPointsEqual = function(line1End, line2End) {
   return line1End.x == line2End.x && line1End.y == line2End.y;
 };
 
+const slopeOf = function(line) {
+  const slope = (line.endB.y - line.endA.y) / (line.endB.x - line.endA.x);
+  return slope;
+};
+
 const square = function(number) {
   return number * number;
 };
@@ -34,10 +39,10 @@ class Line {
   }
 
   isParallelTo(line2) {
-    if (this.isEqualTo(line2)) return true;
-    if (this.endA.y == line2.endA.y && this.endB.y == line2.endB.y) return true;
-    if (this.endA.x == line2.endA.x && this.endB.x == line2.endB.x) return true;
-    return false;
+    if (this.isEqualTo(line2)) return false;
+    // if (this.endA.y == line2.endA.y && this.endB.y == line2.endB.y) return true;
+    // if (this.endA.x == line2.endA.x && this.endB.x == line2.endB.x) return true;
+    return slopeOf(this) == slopeOf(line2);
   }
 }
 
