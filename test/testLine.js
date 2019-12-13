@@ -39,5 +39,10 @@ describe("Line", function() {
       const line1 = new Line({ x: 1, y: 1 }, { x: 1, y: 1 });
       assert.strictEqual(line1.length, 0);
     });
+
+    it("should give length  as positive when all points of line are positive", function() {
+      const line1 = new Line({ x: 1, y: 1 }, { x: 4, y: 1 });
+      assert.strictEqual(line1.length, 3);
+    });
   });
 });

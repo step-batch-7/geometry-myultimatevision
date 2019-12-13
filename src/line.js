@@ -2,6 +2,10 @@ const areEndPointsEqual = function(line1End, line2End) {
   return line1End.x == line2End.x && line1End.y == line2End.y;
 };
 
+const square = function(number) {
+  return number * number;
+};
+
 class Line {
   constructor(endA, endB) {
     this.endA = { x: endA.x, y: endA.y };
@@ -21,7 +25,12 @@ class Line {
   }
 
   get length() {
-    return 0;
+    const differenceOfXInEnds = this.endB.x - this.endA.x;
+    const differenceOfYInEnds = this.endB.y - this.endA.y;
+    const length = Math.sqrt(
+      square(differenceOfXInEnds) + square(differenceOfYInEnds)
+    );
+    return length;
   }
 }
 
