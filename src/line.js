@@ -19,6 +19,10 @@ class Line {
       areEndPointsEqual(this.endB, other.endB);
     return areEndsEqual;
   }
+
+  get length() {
+    return 0;
+  }
 }
 
 module.exports = Line;

@@ -33,4 +33,11 @@ describe("Line", function() {
       assert.ok(!actual);
     });
   });
+
+  describe("length", function() {
+    it("should give 0 if both points of line are Equal", function() {
+      const line1 = new Line({ x: 1, y: 1 }, { x: 1, y: 1 });
+      assert.strictEqual(line1.length, 0);
+    });
+  });
 });
