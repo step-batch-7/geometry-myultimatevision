@@ -73,5 +73,11 @@ describe("Line", function() {
       line2 = new Line({ x: 4, y: 0 }, { x: 4, y: 4 });
       assert.isOk(line1.isParallelTo(line2));
     });
+
+    it("should give true if both lines are parrallel to Y-axis", function() {
+      line1 = new Line({ x: 0, y: 0 }, { x: 4, y: 0 });
+      line2 = new Line({ x: 0, y: 4 }, { x: 4, y: 4 });
+      assert.isOk(line1.isParallelTo(line2));
+    });
   });
 });
