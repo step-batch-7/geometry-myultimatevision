@@ -4,11 +4,8 @@ const areEndPointsEqual = function(line1End, line2End) {
 
 class Line {
   constructor(endA, endB) {
-    this.endA = endA;
-    this.endB = endB;
-
-    // this.endA = {x:endA.x,y:endA.y};
-    // this.endB = {x:endB.x,y:endB.y};
+    this.endA = { x: endA.x, y: endA.y };
+    this.endB = { x: endB.x, y: endB.y };
   }
 
   toString() {
@@ -16,10 +13,11 @@ class Line {
   }
 
   isEqualTo(line2) {
-    const isEndsEqual =
+    const areEndsEqual =
       areEndPointsEqual(this.endA, line2.endA) &&
       areEndPointsEqual(this.endB, line2.endB);
-    return isEndsEqual;
+    const areInstancesEqual = line2 instanceof Line;
+    return areEndsEqual && areInstancesEqual;
   }
 }
 
