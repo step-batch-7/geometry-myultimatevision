@@ -12,12 +12,12 @@ class Line {
     return `Line ((${this.endA.x},${this.endA.y}),(${this.endB.x},${this.endB.y}))`;
   }
 
-  isEqualTo(line2) {
+  isEqualTo(other) {
+    if (!(other instanceof Line)) return false;
     const areEndsEqual =
-      areEndPointsEqual(this.endA, line2.endA) &&
-      areEndPointsEqual(this.endB, line2.endB);
-    const areInstancesEqual = line2 instanceof Line;
-    return areEndsEqual && areInstancesEqual;
+      areEndPointsEqual(this.endA, other.endA) &&
+      areEndPointsEqual(this.endB, other.endB);
+    return areEndsEqual;
   }
 }
 
