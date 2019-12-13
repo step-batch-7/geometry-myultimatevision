@@ -49,5 +49,10 @@ describe("Line", function() {
       const line1 = new Line({ x: -1, y: 1 }, { x: 4, y: 1 });
       assert.strictEqual(line1.length, 5);
     });
+
+    it("should give length  as positive when two points of line are negative", function() {
+      const line1 = new Line({ x: -1, y: -1 }, { x: -4, y: -1 });
+      assert.strictEqual(line1.length, 3);
+    });
   });
 });
