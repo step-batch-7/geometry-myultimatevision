@@ -32,6 +32,10 @@ class Line {
     );
     return length;
   }
+
+  isParallelTo(line2) {
+    if (this.isEqualTo(line2)) return true;
+  }
 }
 
 module.exports = Line;

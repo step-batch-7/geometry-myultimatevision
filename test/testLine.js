@@ -60,4 +60,12 @@ describe("Line", function() {
       assert.approximately(line1.length, 1.4142135623730951, 1);
     });
   });
+
+  describe("isParrellel to", function() {
+    it("should give true if both end points are equal", function() {
+      line1 = new Line({ x: 3, y: 1 }, { x: 4, y: 2 });
+      line2 = new Line({ x: 3, y: 1 }, { x: 4, y: 2 });
+      assert.isOk(line1.isParallelTo(line2));
+    });
+  });
 });
