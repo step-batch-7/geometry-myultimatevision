@@ -7,6 +7,14 @@ const slopeOf = function(line) {
   return slope;
 };
 
+const isYOutsideTheLine = function(y1, y2, y) {
+  return (y1 > y && y2 > y) || (y1 < y && y2 < y);
+};
+
+const isXOutsideTheLine = function(x1, x2, x) {
+  return (x1 > x && x2 > x) || (x1 < x && x2 < x);
+};
+
 class Line {
   constructor(endA, endB) {
     this.endA = { x: endA.x, y: endA.y };
@@ -44,11 +52,19 @@ class Line {
   }
 
   findX(y) {
-    if (this.endA.y == y) return this.endA.x;
+    if (isYOutsideTheLine(this.endA.y, this.endB.y, y)) return NaN;
+    if (this.endA.x == this.endB.x || this.endA.y == y) return this.endA.x;
     if (this.endB.y == y) return this.endB.x;
-    if (this.endA.x == this.endB.x) return this.endB.x;
-    const x = (this.endA.y - y + this.slope * this.endA.x) / this.slope;
+    const x = (y - this.endA.y) / this.slope + this.endA.x;
     return x;
+  }
+
+  findY(x) {
+    if (isXOutsideTheLine(this.endA.x, this.endB.x, x)) return NaN;
+    if (this.endA.y == this.endB.y || this.endA.x == x) return this.endA.y;
+    if (this.endB.x == x) return this.endB.y;
+    const y = this.slope * (x - this.endA.x) + this.endA.x;
+    return y;
   }
 }
 

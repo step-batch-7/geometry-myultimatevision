@@ -126,9 +126,9 @@ describe("Line", function() {
 
   describe("findX", function() {
     it("should find x when y is present in the line y coordinates ", function() {
-      const line = new Line({ x: 2, y: 2 }, { x: 2, y: 4 });
+      const line = new Line({ x: 2, y: 2 }, { x: 4, y: 4 });
       assert.strictEqual(line.findX(2), 2);
-      assert.strictEqual(line.findX(4), 2);
+      assert.strictEqual(line.findX(4), 4);
     });
 
     it("should find x if y is not present in the line coordinates ", function() {
@@ -137,14 +137,50 @@ describe("Line", function() {
     });
 
     it("should find same x for all y coordinates when it is parallel to x-axis ", function() {
-      const line = new Line({ x: 2, y: 2 }, { x: 2, y: 4 });
+      const line = new Line({ x: 2, y: 2 }, { x: 2, y: 5 });
       assert.strictEqual(line.findX(3), 2);
       assert.strictEqual(line.findX(5), 2);
     });
 
     it("should find give decimal value when decimal point is returning ", function() {
       const line = new Line({ x: 2, y: 2 }, { x: 3, y: 4 });
-      assert.strictEqual(line.findX(3), 1.5);
+      assert.strictEqual(line.findX(3), 2.5);
+    });
+
+    it("should find give nan when y exceeded the line ", function() {
+      const line = new Line({ x: 2, y: 2 }, { x: 2, y: 4 });
+      assert.isNaN(line.findX(5));
+      assert.isNaN(line.findX(1));
+    });
+  });
+
+  describe("findY", function() {
+    it("should find y when x is present in the line x coordinates ", function() {
+      const line = new Line({ x: 2, y: 2 }, { x: 4, y: 4 });
+      assert.strictEqual(line.findY(2), 2);
+      assert.strictEqual(line.findY(4), 4);
+    });
+
+    it("should find y if x is not present in the line coordinates ", function() {
+      const line = new Line({ x: 2, y: 2 }, { x: 4, y: 2 });
+      assert.strictEqual(line.findY(3), 2);
+    });
+
+    it("should find same y for all x coordinates when it is parallel to y-axis ", function() {
+      const line = new Line({ x: 2, y: 2 }, { x: 5, y: 2 });
+      assert.strictEqual(line.findY(3), 2);
+      assert.strictEqual(line.findY(4), 2);
+    });
+
+    it("should find give decimal value when decimal point is returning ", function() {
+      const line = new Line({ x: 2, y: 2 }, { x: 4, y: 3 });
+      assert.strictEqual(line.findY(3), 2.5);
+    });
+
+    it("should find give nan when x exceeded the line ", function() {
+      const line = new Line({ x: 2, y: 2 }, { x: 2, y: 4 });
+      assert.isNaN(line.findY(5));
+      assert.isNaN(line.findY(1));
     });
   });
 });
