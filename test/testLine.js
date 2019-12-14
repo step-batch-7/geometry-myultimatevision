@@ -6,7 +6,7 @@ describe("Line", function() {
     it("should give a line when line ends are given", function() {
       const line1 = new Line({ x: 1, y: 2 }, { x: 6, y: 2 });
       const actual = line1.toString();
-      const expected = "Line ((1,2),(6,2))";
+      const expected = "[Line (1,2) to (6,2)]";
       assert.strictEqual(actual, expected);
     });
   });
@@ -89,38 +89,38 @@ describe("Line", function() {
 
   describe("slope", function() {
     it("should return 0 if line is parallel to x-axis ", function() {
-      const line1 = new Line({ x: 2, y: 2 }, { x: 0, y: 2 });
-      assert.strictEqual(line1.slope, 0);
+      const line = new Line({ x: 2, y: 2 }, { x: 0, y: 2 });
+      assert.strictEqual(line.slope, 0);
     });
 
     it("should return infinity if line is parallel to y-axis and difference between y's is whole number", function() {
-      const line1 = new Line({ x: 2, y: 0 }, { x: 2, y: 2 });
-      assert.strictEqual(line1.slope, Infinity);
+      const line = new Line({ x: 2, y: 0 }, { x: 2, y: 2 });
+      assert.strictEqual(line.slope, Infinity);
     });
 
     it("should return -infinity if line is parallel to y-axis and difference between y's is negative", function() {
-      const line1 = new Line({ x: 2, y: 2 }, { x: 2, y: 0 });
-      assert.strictEqual(line1.slope, -Infinity);
+      const line = new Line({ x: 2, y: 2 }, { x: 2, y: 0 });
+      assert.strictEqual(line.slope, -Infinity);
     });
 
     it("should return positive slope when difference between coordinates are positive", function() {
-      const line1 = new Line({ x: 2, y: 0 }, { x: 3, y: 2 });
-      assert.strictEqual(line1.slope, 2);
+      const line = new Line({ x: 2, y: 0 }, { x: 3, y: 2 });
+      assert.strictEqual(line.slope, 2);
     });
 
     it("should return negative slope when difference between y's is negative", function() {
-      const line1 = new Line({ x: 2, y: 2 }, { x: 3, y: 0 });
-      assert.strictEqual(line1.slope, -2);
+      const line = new Line({ x: 2, y: 2 }, { x: 3, y: 0 });
+      assert.strictEqual(line.slope, -2);
     });
 
     it("should return negative slope when difference between x's is negative", function() {
-      const line1 = new Line({ x: 2, y: 2 }, { x: 0, y: 4 });
-      assert.strictEqual(line1.slope, -1);
+      const line = new Line({ x: 2, y: 2 }, { x: 0, y: 4 });
+      assert.strictEqual(line.slope, -1);
     });
 
     it("should return negative slope when difference between x's is 0", function() {
-      const line1 = new Line({ x: 2, y: 2 }, { x: 2, y: 4 });
-      assert.strictEqual(line1.slope, Infinity);
+      const line = new Line({ x: 2, y: 2 }, { x: 2, y: 4 });
+      assert.strictEqual(line.slope, Infinity);
     });
   });
 
