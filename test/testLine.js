@@ -88,14 +88,24 @@ describe("Line", function() {
   });
 
   describe("slope", function() {
-    it("should return 0 if line is parallel to x-axis", function() {
-      const line1 = new Line({ x: 0, y: 2 }, { x: 2, y: 2 });
+    it("should return 0 if line is parallel to x-axis ", function() {
+      const line1 = new Line({ x: 2, y: 2 }, { x: 0, y: 2 });
       assert.strictEqual(line1.slope, 0);
     });
 
-    it("should return infinity if line is parallel to y-axis", function() {
-      const line1 = new Line({ x: 2, y: 0 }, { x: 2, y: 2 });
-      assert.strictEqual(line1.slope, Infinity);
+    it("should return positive slope if line is parallel to y-axis and difference between coordinates are positive", function() {
+      const line1 = new Line({ x: 2, y: 0 }, { x: 3, y: 2 });
+      assert.strictEqual(line1.slope, 2);
+    });
+
+    it("should return negative slope if line is parallel to y-axis and difference between y's is negative", function() {
+      const line1 = new Line({ x: 2, y: 2 }, { x: 3, y: 0 });
+      assert.strictEqual(line1.slope, -2);
+    });
+
+    it("should return negative slope if line is parallel to y-axis and difference between x's is negative", function() {
+      const line1 = new Line({ x: 2, y: 2 }, { x: 0, y: 4 });
+      assert.strictEqual(line1.slope, -1);
     });
   });
 });
