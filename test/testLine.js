@@ -126,20 +126,25 @@ describe("Line", function() {
 
   describe("findX", function() {
     it("should find x when y is present in the line y coordinates ", function() {
-      const line1 = new Line({ x: 2, y: 2 }, { x: 2, y: 4 });
-      assert.strictEqual(line1.findX(2), 2);
-      assert.strictEqual(line1.findX(4), 2);
+      const line = new Line({ x: 2, y: 2 }, { x: 2, y: 4 });
+      assert.strictEqual(line.findX(2), 2);
+      assert.strictEqual(line.findX(4), 2);
     });
 
     it("should find x if y is not present in the line coordinates ", function() {
-      const line1 = new Line({ x: 2, y: 2 }, { x: 2, y: 4 });
-      assert.strictEqual(line1.findX(3), 2);
+      const line = new Line({ x: 2, y: 2 }, { x: 2, y: 4 });
+      assert.strictEqual(line.findX(3), 2);
     });
 
     it("should find same x for all y coordinates when it is parallel to x-axis ", function() {
-      const line1 = new Line({ x: 2, y: 2 }, { x: 2, y: 4 });
-      assert.strictEqual(line1.findX(3), 2);
-      assert.strictEqual(line1.findX(5), 2);
+      const line = new Line({ x: 2, y: 2 }, { x: 2, y: 4 });
+      assert.strictEqual(line.findX(3), 2);
+      assert.strictEqual(line.findX(5), 2);
+    });
+
+    it("should find give decimal value when decimal point is returning ", function() {
+      const line = new Line({ x: 2, y: 2 }, { x: 3, y: 4 });
+      assert.strictEqual(line.findX(3), 1.5);
     });
   });
 });

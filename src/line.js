@@ -47,7 +47,7 @@ class Line {
     if (this.endA.y == y) return this.endA.x;
     if (this.endB.y == y) return this.endB.x;
     if (this.endA.x == this.endB.x) return this.endB.x;
-    const x = (this.endA.y == y) / (this.slope * this.endA.x);
+    const x = (this.endA.y - y + this.slope * this.endA.x) / this.slope;
     return x;
   }
 }
