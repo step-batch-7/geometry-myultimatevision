@@ -1,4 +1,4 @@
-class point {
+class Point {
   constructor(point) {
     this.x = point.x;
     this.y = point.y;
@@ -11,6 +11,11 @@ class point {
   visit(visitOperation) {
     return visitOperation(this.x, this.y);
   }
+
+  isEqualTo(other) {
+    if (!other instanceof Point) return false;
+    return this.x == other.x && this.y == other.y;
+  }
 }
 
-module.exports = point;
+module.exports = Point;

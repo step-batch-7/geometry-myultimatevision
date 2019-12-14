@@ -22,4 +22,12 @@ describe("point", function() {
       assert.strictEqual(actual, 8);
     });
   });
+
+  describe("isEqualTo", function() {
+    it("should return true when both  coordinates of point1 are equal with respective coordinates of point2 ", function() {
+      point1 = new Point({ x: 3, y: 7 });
+      point2 = new Point({ x: 3, y: 7 });
+      assert.isTrue(point1.isEqualTo(point2));
+    });
+  });
 });
