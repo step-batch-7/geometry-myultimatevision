@@ -123,4 +123,12 @@ describe("Line", function() {
       assert.strictEqual(line1.slope, Infinity);
     });
   });
+
+  describe("findX", function() {
+    it("should find y if y is in the line coordinates given previously ", function() {
+      const line1 = new Line({ x: 2, y: 2 }, { x: 2, y: 4 });
+      assert.strictEqual(line1.findX(2), 2);
+      assert.strictEqual(line1.findX(4), 2);
+    });
+  });
 });

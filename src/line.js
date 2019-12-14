@@ -42,6 +42,11 @@ class Line {
     if (this.isEqualTo(line2)) return false;
     return this.slope == slopeOf(line2);
   }
+
+  findX(y) {
+    if (this.endA.y == y) return this.endA.x;
+    if (this.endB.y == y) return this.endB.x;
+  }
 }
 
 module.exports = Line;
