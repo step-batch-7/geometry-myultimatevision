@@ -93,19 +93,34 @@ describe("Line", function() {
       assert.strictEqual(line1.slope, 0);
     });
 
-    it("should return positive slope if line is parallel to y-axis and difference between coordinates are positive", function() {
+    it("should return infinity if line is parallel to y-axis and difference between y's is whole number", function() {
+      const line1 = new Line({ x: 2, y: 0 }, { x: 2, y: 2 });
+      assert.strictEqual(line1.slope, Infinity);
+    });
+
+    it("should return -infinity if line is parallel to y-axis and difference between y's is negative", function() {
+      const line1 = new Line({ x: 2, y: 2 }, { x: 2, y: 0 });
+      assert.strictEqual(line1.slope, -Infinity);
+    });
+
+    it("should return positive slope when difference between coordinates are positive", function() {
       const line1 = new Line({ x: 2, y: 0 }, { x: 3, y: 2 });
       assert.strictEqual(line1.slope, 2);
     });
 
-    it("should return negative slope if line is parallel to y-axis and difference between y's is negative", function() {
+    it("should return negative slope when difference between y's is negative", function() {
       const line1 = new Line({ x: 2, y: 2 }, { x: 3, y: 0 });
       assert.strictEqual(line1.slope, -2);
     });
 
-    it("should return negative slope if line is parallel to y-axis and difference between x's is negative", function() {
+    it("should return negative slope when difference between x's is negative", function() {
       const line1 = new Line({ x: 2, y: 2 }, { x: 0, y: 4 });
       assert.strictEqual(line1.slope, -1);
+    });
+
+    it("should return negative slope when difference between x's is 0", function() {
+      const line1 = new Line({ x: 2, y: 2 }, { x: 2, y: 4 });
+      assert.strictEqual(line1.slope, Infinity);
     });
   });
 });

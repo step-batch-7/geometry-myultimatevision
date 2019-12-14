@@ -7,10 +7,6 @@ const slopeOf = function(line) {
   return slope;
 };
 
-const square = function(number) {
-  return number * number;
-};
-
 class Line {
   constructor(endA, endB) {
     this.endA = { x: endA.x, y: endA.y };
@@ -33,7 +29,7 @@ class Line {
     const differenceOfXInEnds = this.endB.x - this.endA.x;
     const differenceOfYInEnds = this.endB.y - this.endA.y;
     const length = Math.sqrt(
-      square(differenceOfXInEnds) + square(differenceOfYInEnds)
+      Math.pow(differenceOfXInEnds, 2) + Math.pow(differenceOfYInEnds, 2)
     );
     return length;
   }
