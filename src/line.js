@@ -83,8 +83,8 @@ class Line {
     const y = (1 - ratio) * this.endA.y + this.endB.y * ratio;
     const newPoint = new Point(x, y);
     if (
-      isXOutsideTheLine(this.endA.x, this.endB.x, y) &&
-      isXOutsideTheLine(this.endA.x, this.endB.x, y)
+      isXOutsideTheLine(this.endA.x, this.endB.x, x) ||
+      isYOutsideTheLine(this.endA.y, this.endB.y, y)
     )
       return null;
     return newPoint;

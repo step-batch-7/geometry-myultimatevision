@@ -249,9 +249,28 @@ describe("Line", function() {
   describe("findPointFromStart", function() {
     it("should find starting point when distance is zero ", function() {
       const line = new Line({ x: 3, y: 5 }, { x: 7, y: 5 });
+      const actual = line.findPointFromStart(0);
+      const expected = new Point(3, 5);
+      assert.deepStrictEqual(actual, expected);
+    });
+
+    it("should find point at given distance when distance is positive ", function() {
+      const line = new Line({ x: 3, y: 5 }, { x: 7, y: 5 });
       const actual = line.findPointFromStart(2);
       const expected = new Point(5, 5);
       assert.deepStrictEqual(actual, expected);
+    });
+
+    it("should find null when distance is negative ", function() {
+      const line = new Line({ x: 3, y: 5 }, { x: 7, y: 5 });
+      const actual = line.findPointFromStart(-2);
+      assert.deepStrictEqual(actual, null);
+    });
+
+    it("should find null when distance is more than length ", function() {
+      const line = new Line({ x: 3, y: 2 }, { x: 8, y: 2 });
+      const actual = line.findPointFromStart(7);
+      assert.deepStrictEqual(actual, null);
     });
   });
 });
