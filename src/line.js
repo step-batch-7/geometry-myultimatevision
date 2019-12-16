@@ -1,7 +1,4 @@
 const Point = require("./point");
-const areEndPointsEqual = function(line1End, line2End) {
-  return line1End.x == line2End.x && line1End.y == line2End.y;
-};
 
 const isYOutsideTheLine = function(y1, y2, y) {
   return (y1 > y && y2 > y) || (y1 < y && y2 < y);
@@ -23,9 +20,13 @@ class Line {
 
   isEqualTo(other) {
     if (!(other instanceof Line)) return false;
+    const thisEndApoint = new Point(this.endA.x, this.endA.y);
+    const thisEndBpoint = new Point(this.endB.x, this.endB.y);
+    const otherEndApoint = new Point(other.endA.x, other.endA.y);
+    const otherEndBpoint = new Point(other.endB.x, other.endB.y);
     const areEndsEqual =
-      areEndPointsEqual(this.endA, other.endA) &&
-      areEndPointsEqual(this.endB, other.endB);
+      thisEndApoint.isEqualTo(otherEndApoint) &&
+      thisEndBpoint.isEqualTo(otherEndBpoint);
     return areEndsEqual;
   }
 

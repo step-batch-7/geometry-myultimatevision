@@ -1,7 +1,7 @@
 class Point {
-  constructor(point) {
-    this.x = point.x;
-    this.y = point.y;
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
   }
 
   toString() {
@@ -18,7 +18,7 @@ class Point {
   }
 
   clone() {
-    return new Point({ x: this.x, y: this.y });
+    return new Point(this.x, this.y);
   }
 
   findDistanceTo(point) {

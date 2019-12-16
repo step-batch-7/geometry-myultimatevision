@@ -215,25 +215,25 @@ describe("Line", function() {
   describe("hasPoint", function() {
     it("should return true if point is present on end of that line", function() {
       const line = new Line({ x: 3, y: 5 }, { x: 2, y: 4 });
-      const point1 = new Point({ x: 3, y: 5 });
+      const point1 = new Point(3, 5);
       const actual1 = line.hasPoint(point1);
       assert.isTrue(actual1);
 
-      const point2 = new Point({ x: 2, y: 4 });
+      const point2 = new Point(2, 4);
       const actual2 = line.hasPoint(point2);
       assert.isTrue(actual2);
     });
 
     it("should return true if point is present on that line", function() {
       const line = new Line({ x: 3, y: 5 }, { x: 7, y: 5 });
-      const point = new Point({ x: 5, y: 5 });
+      const point = new Point(5, 5);
       const actual = line.hasPoint(point);
       assert.isTrue(actual);
     });
 
     it("should return false if point is not present on that line", function() {
       const line = new Line({ x: 3, y: 5 }, { x: 7, y: 5 });
-      const point = new Point({ x: 1, y: 5 });
+      const point = new Point(1, 5);
       const actual = line.hasPoint(point);
       assert.isFalse(actual);
     });
