@@ -1,17 +1,24 @@
 const Point = require("./point");
 
-const isYOutsideTheLine = function(y1, y2, y) {
-  return (y1 > y && y2 > y) || (y1 < y && y2 < y);
+const isNotInRange = function(range, number) {
+  return (
+    (number > range[1] && number > range[0]) ||
+    (number < range[1] && number < range[0])
+  );
 };
 
 const isXOutsideTheLine = function(x1, x2, x) {
   return (x1 > x && x2 > x) || (x1 < x && x2 < x);
 };
 
+const getCoordinate = function(end1, end2, ratio) {
+  return (1 - ratio) * end1 + end2 * ratio;
+};
+
 class Line {
   constructor(endA, endB) {
-    this.endA = { x: endA.x, y: endA.y };
-    this.endB = { x: endB.x, y: endB.y };
+    this.endA = new Point(endA.x, endA.y);
+    this.endB = new Point(endB.x, endB.y);
   }
 
   toString() {
@@ -20,13 +27,10 @@ class Line {
 
   isEqualTo(other) {
     if (!(other instanceof Line)) return false;
-    const thisEndApoint = new Point(this.endA.x, this.endA.y);
-    const thisEndBpoint = new Point(this.endB.x, this.endB.y);
-    const otherEndApoint = new Point(other.endA.x, other.endA.y);
-    const otherEndBpoint = new Point(other.endB.x, other.endB.y);
+    const line1 = new Line(this.endA, this.endB);
+    const line2 = new Line(other.endA, other.endB);
     const areEndsEqual =
-      thisEndApoint.isEqualTo(otherEndApoint) &&
-      thisEndBpoint.isEqualTo(otherEndBpoint);
+      line1.endA.isEqualTo(line2.endA) && line1.endB.isEqualTo(line2.endB);
     return areEndsEqual;
   }
 
@@ -43,13 +47,13 @@ class Line {
   isParallelTo(line2) {
     if (this.isEqualTo(line2)) return false;
     const line = new Line(this.endA, line2.endA);
-    if (Math.abs(this.slope) == Infinity)
+    if (Math.abs(this.slope) == Infinity && Math.abs(line2.slope) == Infinity)
       return Math.abs(this.slope) != Math.abs(line.slope);
     return this.slope == line2.slope && this.slope != line.slope;
   }
 
   findX(y) {
-    if (isYOutsideTheLine(this.endA.y, this.endB.y, y)) return NaN;
+    if (isNotInRange([this.endA.y, this.endB.y], y)) return NaN;
     if (this.endA.x == this.endB.x || this.endA.y == y) return this.endA.x;
     if (this.endB.y == y) return this.endB.x;
     const x = (y - this.endA.y) / this.slope + this.endA.x;
@@ -57,7 +61,7 @@ class Line {
   }
 
   findY(x) {
-    if (isXOutsideTheLine(this.endA.x, this.endB.x, x)) return NaN;
+    if (isNotInRange([this.endA.x, this.endB.x], x)) return NaN;
     if (this.endA.y == this.endB.y || this.endA.x == x) return this.endA.y;
     if (this.endB.x == x) return this.endB.y;
     const y = this.slope * (x - this.endA.x) + this.endA.y;
@@ -80,19 +84,18 @@ class Line {
   findPointFromStart(distance) {
     const ratio = distance / this.length;
     if (ratio > 1 || ratio < 0) return null;
-    const x = (1 - ratio) * this.endA.x + this.endB.x * ratio;
-    const y = (1 - ratio) * this.endA.y + this.endB.y * ratio;
+    const x = getCoordinate(this.endA.x, this.endB.x, ratio);
+    const y = getCoordinate(this.endA.y, this.endB.y, ratio);
     const newPoint = new Point(x, y);
     return newPoint;
   }
 
   findPointFromEnd(distance) {
     const ratio = distance / this.length;
-    if (ratio > 1 || ratio < 0) return null;
-    const x = (1 - ratio) * this.endB.x + this.endA.x * ratio;
-    const y = (1 - ratio) * this.endB.y + this.endA.y * ratio;
-    const newPoint = new Point(x, y);
-    return newPoint;
+    if (isNotInRange([0, 1], ratio)) return null;
+    const x = getCoordinate(this.endB.x, this.endA.x, ratio);
+    const y = getCoordinate(this.endB.y, this.endA.y, ratio);
+    return new Point(x, y);
   }
 }
 
