@@ -245,4 +245,13 @@ describe("Line", function() {
       assert.isFalse(actual);
     });
   });
+
+  describe("findPointFromStart", function() {
+    it("should find starting point when distance is zero ", function() {
+      const line = new Line({ x: 3, y: 5 }, { x: 7, y: 5 });
+      const actual = line.findPointFromStart(2);
+      const expected = new Point(5, 5);
+      assert.deepStrictEqual(actual, expected);
+    });
+  });
 });

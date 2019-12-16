@@ -76,6 +76,19 @@ class Line {
     if (!(point instanceof Point)) return false;
     return point.x == this.findX(point.y) || point.y == this.findY(point.x);
   }
+
+  findPointFromStart(distance) {
+    const ratio = distance / this.length;
+    const x = (1 - ratio) * this.endA.x + this.endB.x * ratio;
+    const y = (1 - ratio) * this.endA.y + this.endB.y * ratio;
+    const newPoint = new Point(x, y);
+    if (
+      isXOutsideTheLine(this.endA.x, this.endB.x, y) &&
+      isXOutsideTheLine(this.endA.x, this.endB.x, y)
+    )
+      return null;
+    return newPoint;
+  }
 }
 
 module.exports = Line;
