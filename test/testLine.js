@@ -175,8 +175,11 @@ describe("Line", function() {
     });
 
     it("should find y if x is not present in the line coordinates ", function() {
-      const line = new Line({ x: 2, y: 2 }, { x: 4, y: 2 });
-      assert.strictEqual(line.findY(3), 2);
+      const line1 = new Line({ x: 2, y: 2 }, { x: 4, y: 2 });
+      assert.strictEqual(line1.findY(3), 2);
+
+      const line2 = new Line({ x: 2, y: 0 }, { x: 0, y: 2 });
+      assert.strictEqual(line2.findY(1), 1);
     });
 
     it("should find same y for all x coordinates when it is parallel to y-axis ", function() {

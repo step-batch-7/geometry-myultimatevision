@@ -71,5 +71,12 @@ describe("point", function() {
       const actual = point1.findDistanceTo(point2);
       assert.strictEqual(actual, 0);
     });
+
+    it("should return distance if both points are at different coordinates", function() {
+      const point1 = new Point({ x: 2, y: 4 });
+      const point2 = new Point({ x: 6, y: 7 });
+      const actual = point1.findDistanceTo(point2);
+      assert.strictEqual(actual, 5);
+    });
   });
 });

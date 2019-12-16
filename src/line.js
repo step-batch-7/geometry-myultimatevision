@@ -59,7 +59,7 @@ class Line {
     if (isXOutsideTheLine(this.endA.x, this.endB.x, x)) return NaN;
     if (this.endA.y == this.endB.y || this.endA.x == x) return this.endA.y;
     if (this.endB.x == x) return this.endB.y;
-    const y = this.slope * (x - this.endA.x) + this.endA.x;
+    const y = this.slope * (x - this.endA.x) + this.endA.y;
     return y;
   }
 
