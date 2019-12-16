@@ -44,7 +44,10 @@ class Line {
 
   isParallelTo(line2) {
     if (this.isEqualTo(line2)) return false;
-    return this.slope == line2.slope;
+    const line = new Line(this.endA, line2.endA);
+    if (Math.abs(this.slope) == Infinity)
+      return Math.abs(this.slope) != Math.abs(line.slope);
+    return this.slope == line2.slope && this.slope != line.slope;
   }
 
   findX(y) {
