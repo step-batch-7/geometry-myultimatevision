@@ -254,7 +254,7 @@ describe("Line", function() {
       assert.deepStrictEqual(actual, expected);
     });
 
-    it("should find null when distance is equal to length ", function() {
+    it("should find end point when distance is equal to length ", function() {
       const line = new Line({ x: 3, y: 2 }, { x: 8, y: 2 });
       const actual = line.findPointFromStart(5);
       const expected = new Point(8, 2);
@@ -294,6 +294,25 @@ describe("Line", function() {
       const actual = line.findPointFromEnd(5);
       const expected = new Point(3, 5);
       assert.deepStrictEqual(actual, expected);
+    });
+
+    it("should return a Point if distance is positive and less than length", function() {
+      const line = new Line({ x: 3, y: 5 }, { x: 7, y: 2 });
+      const actual = line.findPointFromEnd(3);
+      const expected = new Point(4.6, 3.8);
+      assert.deepStrictEqual(actual, expected);
+    });
+
+    it("should return null if distance is negative", function() {
+      const line = new Line({ x: 3, y: 5 }, { x: 7, y: 2 });
+      const actual = line.findPointFromEnd(-1);
+      assert.deepStrictEqual(actual, null);
+    });
+
+    it("should return null if distance is positive and greater than length", function() {
+      const line = new Line({ x: 3, y: 5 }, { x: 7, y: 2 });
+      const actual = line.findPointFromEnd(7);
+      assert.deepStrictEqual(actual, null);
     });
   });
 });

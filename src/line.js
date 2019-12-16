@@ -79,20 +79,20 @@ class Line {
 
   findPointFromStart(distance) {
     const ratio = distance / this.length;
+    if (ratio > 1 || ratio < 0) return null;
     const x = (1 - ratio) * this.endA.x + this.endB.x * ratio;
     const y = (1 - ratio) * this.endA.y + this.endB.y * ratio;
     const newPoint = new Point(x, y);
-    if (
-      isXOutsideTheLine(this.endA.x, this.endB.x, x) ||
-      isYOutsideTheLine(this.endA.y, this.endB.y, y)
-    )
-      return null;
     return newPoint;
   }
 
   findPointFromEnd(distance) {
-    if (distance == 0) return new Point(this.endB.x, this.endB.y);
-    if (this.length == distance) return new Point(this.endA.x, this.endA.y);
+    const ratio = distance / this.length;
+    if (ratio > 1 || ratio < 0) return null;
+    const x = (1 - ratio) * this.endB.x + this.endA.x * ratio;
+    const y = (1 - ratio) * this.endB.y + this.endA.y * ratio;
+    const newPoint = new Point(x, y);
+    return newPoint;
   }
 }
 
