@@ -26,6 +26,10 @@ class Point {
     const dy = this.y - point.y;
     return Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
   }
+
+  isOn(line) {
+    return line.hasPoint(this);
+  }
 }
 
 module.exports = Point;

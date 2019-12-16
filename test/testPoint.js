@@ -1,4 +1,5 @@
 const Point = require("../src/point");
+const Line = require("../src/line");
 const assert = require("chai").assert;
 
 describe("point", function() {
@@ -77,6 +78,16 @@ describe("point", function() {
       const point2 = new Point(6, 7);
       const actual = point1.findDistanceTo(point2);
       assert.strictEqual(actual, 5);
+    });
+  });
+
+  describe("isOn", function() {
+    it("should return true if point is present on the ends", function() {
+      const point1 = new Point(3, 5);
+      const point2 = new Point(7, 8);
+      const line = new Line({ x: 3, y: 5 }, { x: 7, y: 8 });
+      assert.isTrue(point1.isOn(line));
+      assert.isTrue(point2.isOn(line));
     });
   });
 });

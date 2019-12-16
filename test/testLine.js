@@ -254,7 +254,7 @@ describe("Line", function() {
       assert.deepStrictEqual(actual, expected);
     });
 
-    it("should find end point when distance is equal to length ", function() {
+    it("should find end when distance is equal to length ", function() {
       const line = new Line({ x: 3, y: 2 }, { x: 8, y: 2 });
       const actual = line.findPointFromStart(5);
       const expected = new Point(8, 2);
