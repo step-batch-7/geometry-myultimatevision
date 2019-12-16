@@ -1,5 +1,6 @@
 const assert = require("chai").assert;
 const Line = require("../src/line");
+const Point = require("../src/point");
 
 describe("Line", function() {
   describe("toString", function() {
@@ -193,6 +194,19 @@ describe("Line", function() {
         new Line({ x: 2, y: 4 }, { x: 1, y: 3 })
       ];
       assert.deepStrictEqual(actual, expected);
+    });
+  });
+
+  describe("hasPoint", function() {
+    it("should return true if point is present on end of that line", function() {
+      const line = new Line({ x: 3, y: 5 }, { x: 2, y: 4 });
+      const point1 = new Point({ x: 3, y: 5 });
+      const actual1 = line.hasPoint(point1);
+      assert.strictEqual(actual1, true);
+
+      const point2 = new Point({ x: 2, y: 4 });
+      const actual2 = line.hasPoint(point2);
+      assert.strictEqual(actual2, true);
     });
   });
 });

@@ -1,3 +1,4 @@
+const Point = require("./point");
 const areEndPointsEqual = function(line1End, line2End) {
   return line1End.x == line2End.x && line1End.y == line2End.y;
 };
@@ -68,6 +69,11 @@ class Line {
       y: (this.endA.y + this.endB.y) / 2
     };
     return [new Line(this.endA, midPoint), new Line(midPoint, this.endB)];
+  }
+
+  hasPoint(point) {
+    if (!(point instanceof Point)) return false;
+    return this.findX(point.y) == point.x;
   }
 }
 
