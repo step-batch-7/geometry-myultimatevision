@@ -89,6 +89,11 @@ class Line {
       return null;
     return newPoint;
   }
+
+  findPointFromEnd(distance) {
+    if (distance == 0) return new Point(this.endB.x, this.endB.y);
+    if (this.length == distance) return new Point(this.endA.x, this.endA.y);
+  }
 }
 
 module.exports = Line;
