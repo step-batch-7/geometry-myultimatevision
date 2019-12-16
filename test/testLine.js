@@ -227,5 +227,19 @@ describe("Line", function() {
       const actual = line.hasPoint(point);
       assert.isTrue(actual);
     });
+
+    it("should return false if point is not present on that line", function() {
+      const line = new Line({ x: 3, y: 5 }, { x: 7, y: 5 });
+      const point = new Point({ x: 1, y: 5 });
+      const actual = line.hasPoint(point);
+      assert.isFalse(actual);
+    });
+
+    it("should return false if point is not instance of Point", function() {
+      const line = new Line({ x: 3, y: 5 }, { x: 7, y: 5 });
+      const point = { x: 5, y: 5 };
+      const actual = line.hasPoint(point);
+      assert.isFalse(actual);
+    });
   });
 });
