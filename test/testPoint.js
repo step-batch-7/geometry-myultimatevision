@@ -54,4 +54,13 @@ describe("point", function() {
       assert.isFalse(point1.isEqualTo(point2));
     });
   });
+
+  describe("clone", function() {
+    it("should clone the point for given point", function() {
+      const point = new Point({ x: 3, y: 5 });
+      const actual = point.clone();
+      assert.ok(actual instanceof Point);
+      assert.deepStrictEqual(actual, point);
+    });
+  });
 });

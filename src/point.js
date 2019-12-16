@@ -16,6 +16,10 @@ class Point {
     if (!(other instanceof Point)) return false;
     return this.x == other.x && this.y == other.y;
   }
+
+  clone() {
+    return new Point({ x: this.x, y: this.y });
+  }
 }
 
 module.exports = Point;
