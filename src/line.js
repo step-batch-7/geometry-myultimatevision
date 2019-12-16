@@ -30,12 +30,9 @@ class Line {
   }
 
   get length() {
-    const differenceOfXInEnds = this.endB.x - this.endA.x;
-    const differenceOfYInEnds = this.endB.y - this.endA.y;
-    const length = Math.sqrt(
-      Math.pow(differenceOfXInEnds, 2) + Math.pow(differenceOfYInEnds, 2)
-    );
-    return length;
+    const dx = this.endB.x - this.endA.x;
+    const dy = this.endB.y - this.endA.y;
+    return Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
   }
 
   get slope() {

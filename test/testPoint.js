@@ -63,4 +63,13 @@ describe("point", function() {
       assert.deepStrictEqual(actual, point);
     });
   });
+
+  describe("findDistanceTo", function() {
+    it("should return 0 if both points are same", function() {
+      const point1 = new Point({ x: 2, y: 5 });
+      const point2 = new Point({ x: 2, y: 5 });
+      const actual = point1.findDistanceTo(point2);
+      assert.strictEqual(actual, 0);
+    });
+  });
 });
