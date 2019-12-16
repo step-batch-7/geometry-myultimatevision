@@ -202,11 +202,18 @@ describe("Line", function() {
       const line = new Line({ x: 3, y: 5 }, { x: 2, y: 4 });
       const point1 = new Point({ x: 3, y: 5 });
       const actual1 = line.hasPoint(point1);
-      assert.strictEqual(actual1, true);
+      assert.isTrue(actual1);
 
       const point2 = new Point({ x: 2, y: 4 });
       const actual2 = line.hasPoint(point2);
-      assert.strictEqual(actual2, true);
+      assert.isTrue(actual2);
+    });
+
+    it("should return true if point is present on that line", function() {
+      const line = new Line({ x: 3, y: 5 }, { x: 7, y: 5 });
+      const point = new Point({ x: 5, y: 5 });
+      const actual = line.hasPoint(point);
+      assert.isTrue(actual);
     });
   });
 });

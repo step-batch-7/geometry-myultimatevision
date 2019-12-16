@@ -73,7 +73,9 @@ class Line {
 
   hasPoint(point) {
     if (!(point instanceof Point)) return false;
-    return this.findX(point.y) == point.x;
+    const line1 = new Line(this.endA, point);
+    const line2 = new Line(this.endB, point);
+    return line1.length + line2.length == this.length;
   }
 }
 
