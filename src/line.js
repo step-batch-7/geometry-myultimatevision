@@ -2,11 +2,6 @@ const areEndPointsEqual = function(line1End, line2End) {
   return line1End.x == line2End.x && line1End.y == line2End.y;
 };
 
-const slopeOf = function(line) {
-  const slope = (line.endB.y - line.endA.y) / (line.endB.x - line.endA.x);
-  return slope;
-};
-
 const isYOutsideTheLine = function(y1, y2, y) {
   return (y1 > y && y2 > y) || (y1 < y && y2 < y);
 };
@@ -48,7 +43,7 @@ class Line {
 
   isParallelTo(line2) {
     if (this.isEqualTo(line2)) return false;
-    return this.slope == slopeOf(line2);
+    return this.slope == line2.slope;
   }
 
   findX(y) {
@@ -65,6 +60,14 @@ class Line {
     if (this.endB.x == x) return this.endB.y;
     const y = this.slope * (x - this.endA.x) + this.endA.x;
     return y;
+  }
+
+  split() {
+    const midPoint = {
+      x: (this.endA.x + this.endB.x) / 2,
+      y: (this.endA.y + this.endB.y) / 2
+    };
+    return [new Line(this.endA, midPoint), new Line(midPoint, this.endB)];
   }
 }
 

@@ -183,4 +183,16 @@ describe("Line", function() {
       assert.isNaN(line.findY(1));
     });
   });
+
+  describe("split", function() {
+    it("should split a line into two equal parts when line is given ", function() {
+      const line = new Line({ x: 3, y: 5 }, { x: 1, y: 3 });
+      const actual = line.split();
+      const expected = [
+        new Line({ x: 3, y: 5 }, { x: 2, y: 4 }),
+        new Line({ x: 2, y: 4 }, { x: 1, y: 3 })
+      ];
+      assert.deepStrictEqual(actual, expected);
+    });
+  });
 });
