@@ -11,9 +11,14 @@ class Circle {
   }
 
   isEqualTo(circle) {
+    if (!(circle instanceof Circle)) return false;
     const isradiiOfCirclesEqual = this.radius == circle.radius;
     const iscentersOfCirclesEqual = this.center.isEqualTo(circle.center);
     return isradiiOfCirclesEqual && iscentersOfCirclesEqual;
+  }
+
+  get area() {
+    return Math.PI * Math.pow(this.radius, 2);
   }
 }
 
