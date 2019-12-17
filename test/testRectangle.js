@@ -90,5 +90,29 @@ describe("Rectangle", function() {
       const point1 = new Point(3, 2);
       assert.isFalse(rectangle.covers(point1));
     });
+
+    it("should return false when point is on the side", function() {
+      const rectangle = new Rectangle({ x: 3, y: 2 }, { x: 7, y: 4 });
+      const point1 = new Point(5, 2);
+      assert.isFalse(rectangle.covers(point1));
+    });
+
+    it("should return true when point is inside the rectangle", function() {
+      const rectangle = new Rectangle({ x: 3, y: 2 }, { x: 7, y: 4 });
+      const point1 = new Point(5, 3);
+      assert.isTrue(rectangle.covers(point1));
+    });
+
+    it("should return false when point is inside the rectangle", function() {
+      const rectangle = new Rectangle({ x: 3, y: 2 }, { x: 7, y: 4 });
+      const point1 = new Point(8, 5);
+      assert.isFalse(rectangle.covers(point1));
+    });
+
+    it("should return false when point is on the diagnol ,but not on ends", function() {
+      const rectangle = new Rectangle({ x: 3, y: 2 }, { x: 7, y: 4 });
+      const point1 = new Point(5, 3);
+      assert.isTrue(rectangle.covers(point1));
+    });
   });
 });

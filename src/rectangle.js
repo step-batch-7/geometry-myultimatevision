@@ -52,8 +52,8 @@ class Rectangle {
   covers(point) {
     const { endA, endB } = this.diagnol;
     return (
-      isInRange([endA.x, endB.x, point.x]) &&
-      isInRange([endA.y, endB.y, point.y])
+      isInRange([endA.x, endB.x], point.x) &&
+      isInRange([endA.y, endB.y], point.y)
     );
   }
 }
