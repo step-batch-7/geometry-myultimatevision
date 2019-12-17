@@ -24,6 +24,11 @@ class Circle {
   get perimeter() {
     return 2 * Math.PI * this.radius;
   }
+
+  hasPoint(point) {
+    const distanceBetweenPointAndCenter = this.center.findDistanceTo(point);
+    return distanceBetweenPointAndCenter == this.radius;
+  }
 }
 
 module.exports = Circle;

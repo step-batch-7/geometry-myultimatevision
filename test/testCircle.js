@@ -67,4 +67,18 @@ describe("Circle", function() {
       assert.approximately(circle.perimeter, 14, 44);
     });
   });
+
+  describe("hasPoint", function() {
+    it("should give true when given point is on circumference of circle", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 7);
+      const point = new Point(0, 7);
+      assert.isTrue(circle.hasPoint(point));
+    });
+
+    it("should give false when given point is not present on circumference of circle", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 7);
+      const point = new Point(0, 3);
+      assert.isFalse(circle.hasPoint(point));
+    });
+  });
 });
