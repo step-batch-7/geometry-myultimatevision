@@ -9,6 +9,11 @@ class Rectangle {
     const { endA, endB } = this.diagnol;
     return `[Rectangle (${endA.x},${endA.y}) to (${endB.x},${endB.y})]`;
   }
+
+  isEqualTo(rectangle) {
+    if (!(rectangle instanceof Rectangle)) return false;
+    return this.diagnol.isEqualTo(rectangle.diagnol);
+  }
 }
 
 module.exports = Rectangle;
