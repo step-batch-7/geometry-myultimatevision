@@ -3,8 +3,8 @@ const Line = require("./line");
 const getSides = function(endA, endB) {
   const side1 = new Line(endA, { x: endA.x, y: endB.y });
   const side2 = new Line(endA, { x: endB.x, y: endA.y });
-  const side3 = new Line(endB, { x: endA.x, y: endA.y });
-  const side4 = new Line(endB, { x: endB.x, y: endB.y });
+  const side3 = new Line(endB, { x: endA.x, y: endB.y });
+  const side4 = new Line(endB, { x: endB.x, y: endA.y });
   return { side1, side2, side3, side4 };
 };
 
@@ -36,9 +36,11 @@ class Rectangle {
   }
 
   hasPoint(point) {
-    return (
-      point.isEqualTo(this.diagnol.endA) && point.isEqualTo(this.diagnol.endA)
-    );
+    const { endA, endB } = this.diagnol;
+    const sides = getSides(endA, endB);
+    const keys = Object.keys(sides);
+    const thisHasPoint = keys.some(key => sides[key].hasPoint(point));
+    return thisHasPoint;
   }
 }
 

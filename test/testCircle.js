@@ -89,7 +89,7 @@ describe("Circle", function() {
       assert.isTrue(circle.covers(point));
     });
 
-    it("should return false when the given point is circle's circumference", function() {
+    it("should return false when the given point is on the circle's circumference", function() {
       const circle = new Circle({ x: 0, y: 0 }, 7);
       const point = new Point(-7, 0);
       assert.isFalse(circle.covers(point));

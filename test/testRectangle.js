@@ -58,9 +58,27 @@ describe("Rectangle", function() {
 
   describe("hasPoint", function() {
     it("should return true when point is present on the ends of diagnol of the rectangle", function() {
-      const rectangle = new Rectangle({ x: 3, y: 4 }, { x: 7, y: 4 });
-      const point = new Point(3, 4);
+      const rectangle = new Rectangle({ x: 1, y: 2 }, { x: 7, y: 4 });
+      const point = new Point(1, 2);
       assert.isTrue(rectangle.hasPoint(point));
+    });
+
+    it("should return false when point is present on the side of the rectangle", function() {
+      const rectangle = new Rectangle({ x: 1, y: 2 }, { x: 5, y: 4 });
+      const point = new Point(3, 2);
+      assert.isTrue(rectangle.hasPoint(point));
+    });
+
+    it("should return true when point is not present on the side of the rectangle", function() {
+      const rectangle = new Rectangle({ x: 3, y: 2 }, { x: 7, y: 4 });
+      const point = new Point(5, 5);
+      assert.isFalse(rectangle.hasPoint(point));
+    });
+
+    it("should return true when point is present on the diagnol ,but not in ends of the rectangle", function() {
+      const rectangle = new Rectangle({ x: 2, y: 1 }, { x: 6, y: 3 });
+      const point = new Point(4, 2);
+      assert.isFalse(rectangle.hasPoint(point));
     });
   });
 });
