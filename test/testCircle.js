@@ -81,4 +81,12 @@ describe("Circle", function() {
       assert.isFalse(circle.hasPoint(point));
     });
   });
+
+  describe("covers", function() {
+    it("should return true when the given point is circle's center", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 7);
+      const point = new Point(0, 0);
+      assert.isTrue(circle.covers(point));
+    });
+  });
 });

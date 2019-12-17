@@ -29,6 +29,11 @@ class Circle {
     const distanceBetweenPointAndCenter = this.center.findDistanceTo(point);
     return distanceBetweenPointAndCenter == this.radius;
   }
+
+  covers(point) {
+    const distanceBetweenPointAndCenter = this.center.findDistanceTo(point);
+    return distanceBetweenPointAndCenter < this.radius;
+  }
 }
 
 module.exports = Circle;
