@@ -110,10 +110,16 @@ describe("point", function() {
       assert.isFalse(point.isOn(line));
     });
 
-    it("should give true when point is not present on the circle", function() {
+    it("should give true when point is present on the circle", function() {
       const point = new Point(7, 2);
       const circle = new Circle({ x: 2, y: 2 }, 5);
       assert.isTrue(point.isOn(circle));
+    });
+
+    it("should give true when point is not present on the circle", function() {
+      const point = new Point(7, 5);
+      const circle = new Circle({ x: 2, y: 2 }, 5);
+      assert.isFalse(point.isOn(circle));
     });
   });
 });
