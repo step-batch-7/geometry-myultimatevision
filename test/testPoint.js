@@ -1,5 +1,6 @@
 const Point = require("../src/point");
 const Line = require("../src/line");
+const Circle = require("../src/circle");
 const assert = require("chai").assert;
 
 describe("point", function() {
@@ -89,7 +90,7 @@ describe("point", function() {
   });
 
   describe("isOn", function() {
-    it("should return true if point is present on the ends", function() {
+    it("should return true when point is present on the ends", function() {
       const point1 = new Point(3, 5);
       const point2 = new Point(7, 8);
       const line = new Line({ x: 3, y: 5 }, { x: 7, y: 8 });
@@ -97,16 +98,22 @@ describe("point", function() {
       assert.isTrue(point2.isOn(line));
     });
 
-    it("should return true if point is present on the line", function() {
+    it("should return true when point is present on the line", function() {
       const point = new Point(5, 6.5);
       const line = new Line({ x: 3, y: 5 }, { x: 7, y: 8 });
       assert.isTrue(point.isOn(line));
     });
 
-    it("should return true if point is not present on the line", function() {
+    it("should return true when point is not present on the line", function() {
       const point = new Point(5, 6);
       const line = new Line({ x: 2, y: 4 }, { x: 9, y: 8 });
       assert.isFalse(point.isOn(line));
+    });
+
+    it("should give true when point is not present on the circle", function() {
+      const point = new Point(7, 2);
+      const circle = new Circle({ x: 2, y: 2 }, 5);
+      assert.isTrue(point.isOn(circle));
     });
   });
 });
