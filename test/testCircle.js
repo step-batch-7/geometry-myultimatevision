@@ -50,7 +50,7 @@ describe("Circle", function() {
       assert.strictEqual(circle.area, 0);
     });
 
-    it("should give area if radius is positive ", function() {
+    it("should calculate area if radius is positive ", function() {
       const circle = new Circle({ x: 2, y: 0 }, 7);
       assert.approximately(circle.area, 154, 1);
     });
@@ -62,7 +62,7 @@ describe("Circle", function() {
       assert.strictEqual(circle.perimeter, 0);
     });
 
-    it("should give 0 when radius is 0", function() {
+    it("should calculate perimeter when radius is positive", function() {
       const circle = new Circle({ x: 5, y: 5 }, 7);
       assert.approximately(circle.perimeter, 14, 44);
     });
