@@ -1,6 +1,7 @@
 const assert = require("chai").assert;
 const Rectangle = require("../src/rectangle");
 const Line = require("../src/line");
+const Point = require("../src/point");
 
 describe("Rectangle", function() {
   describe("toString", function() {
@@ -52,6 +53,14 @@ describe("Rectangle", function() {
     it("should calculate perimeter when points of diagnol of rectangle are given", function() {
       const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 4, y: 4 });
       assert.strictEqual(rectangle.perimeter, 12);
+    });
+  });
+
+  describe("hasPoint", function() {
+    it("should return true when point is present on the ends of diagnol of the rectangle", function() {
+      const rectangle = new Rectangle({ x: 3, y: 4 }, { x: 7, y: 4 });
+      const point = new Point(3, 4);
+      assert.isTrue(rectangle.hasPoint(point));
     });
   });
 });

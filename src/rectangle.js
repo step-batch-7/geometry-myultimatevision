@@ -34,6 +34,12 @@ class Rectangle {
     const { side1, side2 } = getSides(endA, endB);
     return 2 * (side1.length + side2.length);
   }
+
+  hasPoint(point) {
+    return (
+      point.isEqualTo(this.diagnol.endA) && point.isEqualTo(this.diagnol.endA)
+    );
+  }
 }
 
 module.exports = Rectangle;
