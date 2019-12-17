@@ -22,6 +22,7 @@ class Point {
   }
 
   findDistanceTo(point) {
+    if (!(point instanceof Point)) return NaN;
     const dx = this.x - point.x;
     const dy = this.y - point.y;
     return Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
