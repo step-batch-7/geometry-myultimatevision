@@ -29,9 +29,11 @@ class Line {
     if (!(other instanceof Line)) return false;
     const line1 = new Line(this.endA, this.endB);
     const line2 = new Line(other.endA, other.endB);
-    const areEndsEqual =
+    const areEndsEqualInOrder =
       line1.endA.isEqualTo(line2.endA) && line1.endB.isEqualTo(line2.endB);
-    return areEndsEqual;
+    const areEndsEqualInReverseOrder =
+      line1.endB.isEqualTo(line2.endA) && line1.endA.isEqualTo(line2.endB);
+    return areEndsEqualInOrder || areEndsEqualInReverseOrder;
   }
 
   get length() {

@@ -16,13 +16,19 @@ describe("Line", function() {
     it("should give true when two lines are equal", function() {
       const line1 = new Line({ x: 1, y: 2 }, { x: 6, y: 2 });
       const line2 = new Line({ x: 1, y: 2 }, { x: 6, y: 2 });
-      assert.ok(line1.isEqualTo(line2));
+      assert.isTrue(line1.isEqualTo(line2));
+    });
+
+    it("should give true when two lines are equal but in reverse order", function() {
+      const line1 = new Line({ x: 6, y: 2 }, { x: 1, y: 2 });
+      const line2 = new Line({ x: 1, y: 2 }, { x: 6, y: 2 });
+      assert.isTrue(line1.isEqualTo(line2));
     });
 
     it("should give false when two lines are  not equal", function() {
       const line1 = new Line({ x: 1, y: 2 }, { x: 6, y: 2 });
       const line2 = new Line({ x: 1, y: 3 }, { x: 4, y: 2 });
-      assert.ok(!line1.isEqualTo(line2));
+      assert.isFalse(line1.isEqualTo(line2));
     });
 
     it("should give false when two lines are  not instances of Same class", function() {
@@ -31,7 +37,7 @@ describe("Line", function() {
         endA: { x: 1, y: 2 },
         endB: { x: 6, y: 2 }
       });
-      assert.ok(!actual);
+      assert.isFalse(actual);
     });
   });
 
