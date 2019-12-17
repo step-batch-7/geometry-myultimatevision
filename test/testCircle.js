@@ -88,5 +88,29 @@ describe("Circle", function() {
       const point = new Point(0, 0);
       assert.isTrue(circle.covers(point));
     });
+
+    it("should return false when the given point is circle's circumference", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 7);
+      const point = new Point(-7, 0);
+      assert.isFalse(circle.covers(point));
+    });
+
+    it("should return false when radius is 0", function() {
+      const circle = new Circle({ x: 3, y: 4 }, 0);
+      const point = new Point(3, 4);
+      assert.isFalse(circle.covers(point));
+    });
+
+    it("should return true when distance from point to center is less than radius", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 7);
+      const point = new Point(0, 5);
+      assert.isTrue(circle.covers(point));
+    });
+
+    it("should return false when distance from point to center is greater than radius", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 7);
+      const point = new Point(8, 5);
+      assert.isFalse(circle.covers(point));
+    });
   });
 });
