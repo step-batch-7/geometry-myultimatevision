@@ -30,4 +30,16 @@ describe("Rectangle", function() {
       assert.isFalse(rectangle1.isEqualTo(rectangle2));
     });
   });
+
+  describe("area", function() {
+    it("should give  0 when both points of diagnol of rectangle are equal", function() {
+      const rectangle = new Rectangle({ x: 7, y: 4 }, { x: 7, y: 4 });
+      assert.strictEqual(rectangle.area, 0);
+    });
+
+    it("should calculate area points of diagnol of rectangle are given", function() {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 5, y: 5 });
+      assert.strictEqual(rectangle.area, 16);
+    });
+  });
 });
