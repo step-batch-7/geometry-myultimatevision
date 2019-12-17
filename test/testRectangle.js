@@ -32,7 +32,7 @@ describe("Rectangle", function() {
   });
 
   describe("area", function() {
-    it("should give  0 when both points of diagnol of rectangle are equal", function() {
+    it("should give  zero when both points of diagnol of rectangle are equal", function() {
       const rectangle = new Rectangle({ x: 7, y: 4 }, { x: 7, y: 4 });
       assert.strictEqual(rectangle.area, 0);
     });
@@ -40,6 +40,18 @@ describe("Rectangle", function() {
     it("should calculate area points of diagnol of rectangle are given", function() {
       const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 5, y: 5 });
       assert.strictEqual(rectangle.area, 16);
+    });
+  });
+
+  describe("perimeter", function() {
+    it("should give zero when both points of diagnol of rectangle are equal", function() {
+      const rectangle = new Rectangle({ x: 3, y: 4 }, { x: 3, y: 4 });
+      assert.strictEqual(rectangle.perimeter, 0);
+    });
+
+    it("should calculate perimeter when points of diagnol of rectangle are given", function() {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 4, y: 4 });
+      assert.strictEqual(rectangle.perimeter, 12);
     });
   });
 });

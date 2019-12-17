@@ -17,9 +17,16 @@ class Rectangle {
 
   get area() {
     const { endA, endB } = this.diagnol;
-    const side1 = new Line(endA, { x: endA.x, y: endB.y });
-    const side2 = new Line(endA, { x: endB.x, y: endA.y });
-    return side1.length * side2.length;
+    const length = Math.abs(endA.x - endB.x);
+    const breadth = Math.abs(endA.y - endB.y);
+    return length * breadth;
+  }
+
+  get perimeter() {
+    const { endA, endB } = this.diagnol;
+    const length = Math.abs(endA.x - endB.x);
+    const breadth = Math.abs(endA.y - endB.y);
+    return 2 * (length + breadth);
   }
 }
 
