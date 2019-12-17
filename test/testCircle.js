@@ -113,4 +113,20 @@ describe("Circle", function() {
       assert.isFalse(circle.covers(point));
     });
   });
+
+  describe("moveTo", function() {
+    it("should creates same new circle at same center when given coordinates are same as circle center", function() {
+      const circle1 = new Circle({ x: 5, y: 5 }, 4);
+      const circle2 = new Circle({ x: 5, y: 5 }, 4);
+      const actual = circle1.moveTo({ x: 5, y: 5 });
+      assert.isTrue(actual.isEqualTo(circle2));
+    });
+
+    it("should creates same new circle at given center when given coordinates are different from circle center", function() {
+      const circle1 = new Circle({ x: 5, y: 5 }, 4);
+      const circle2 = new Circle({ x: 2, y: 4 }, 4);
+      const actual = circle1.moveTo({ x: 2, y: 4 });
+      assert.isTrue(actual.isEqualTo(circle2));
+    });
+  });
 });

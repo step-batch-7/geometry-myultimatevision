@@ -34,6 +34,10 @@ class Circle {
     const distanceBetweenPointAndCenter = this.center.findDistanceTo(point);
     return distanceBetweenPointAndCenter < this.radius;
   }
+
+  moveTo(newCenter) {
+    return new Circle(newCenter, this.radius);
+  }
 }
 
 module.exports = Circle;
