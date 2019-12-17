@@ -8,6 +8,12 @@ const getSides = function(endA, endB) {
   return { side1, side2, side3, side4 };
 };
 
+const isInRange = function(range, number) {
+  const max = Math.max(...range);
+  const min = Math.min(...range);
+  return number > min && number < max;
+};
+
 class Rectangle {
   constructor(endA, endB) {
     this.diagnol = new Line(endA, endB);
@@ -41,6 +47,14 @@ class Rectangle {
     const keys = Object.keys(sides);
     const thisHasPoint = keys.some(key => sides[key].hasPoint(point));
     return thisHasPoint;
+  }
+
+  covers(point) {
+    const { endA, endB } = this.diagnol;
+    return (
+      isInRange([endA.x, endB.x, point.x]) &&
+      isInRange([endA.y, endB.y, point.y])
+    );
   }
 }
 

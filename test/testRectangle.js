@@ -63,13 +63,15 @@ describe("Rectangle", function() {
       assert.isTrue(rectangle.hasPoint(point));
     });
 
-    it("should return false when point is present on the side of the rectangle", function() {
+    it("should return false when point is present on the sidess of the rectangle", function() {
       const rectangle = new Rectangle({ x: 1, y: 2 }, { x: 5, y: 4 });
-      const point = new Point(3, 2);
-      assert.isTrue(rectangle.hasPoint(point));
+      const point1 = new Point(3, 2);
+      assert.isTrue(rectangle.hasPoint(point1));
+      const point2 = new Point(5, 3);
+      assert.isTrue(rectangle.hasPoint(point2));
     });
 
-    it("should return true when point is not present on the side of the rectangle", function() {
+    it("should return true when point is not present on the sides of the rectangle", function() {
       const rectangle = new Rectangle({ x: 3, y: 2 }, { x: 7, y: 4 });
       const point = new Point(5, 5);
       assert.isFalse(rectangle.hasPoint(point));
@@ -79,6 +81,14 @@ describe("Rectangle", function() {
       const rectangle = new Rectangle({ x: 2, y: 1 }, { x: 6, y: 3 });
       const point = new Point(4, 2);
       assert.isFalse(rectangle.hasPoint(point));
+    });
+  });
+
+  describe("covers", function() {
+    it("should return false when point is on ends of the diagnol", function() {
+      const rectangle = new Rectangle({ x: 3, y: 2 }, { x: 7, y: 4 });
+      const point1 = new Point(3, 2);
+      assert.isFalse(rectangle.covers(point1));
     });
   });
 });

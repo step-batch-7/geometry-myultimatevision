@@ -1,14 +1,9 @@
 const Point = require("./point");
 
 const isNotInRange = function(range, number) {
-  return (
-    (number > range[1] && number > range[0]) ||
-    (number < range[1] && number < range[0])
-  );
-};
-
-const isXOutsideTheLine = function(x1, x2, x) {
-  return (x1 > x && x2 > x) || (x1 < x && x2 < x);
+  const max = Math.max(...range);
+  const min = Math.min(...range);
+  return number < min || number > max;
 };
 
 const getCoordinate = function(end1, end2, ratio) {
@@ -85,7 +80,7 @@ class Line {
 
   findPointFromStart(distance) {
     const ratio = distance / this.length;
-    if (ratio > 1 || ratio < 0) return null;
+    if (isNotInRange([0, 1], ratio)) return null;
     const x = getCoordinate(this.endA.x, this.endB.x, ratio);
     const y = getCoordinate(this.endA.y, this.endB.y, ratio);
     const newPoint = new Point(x, y);
