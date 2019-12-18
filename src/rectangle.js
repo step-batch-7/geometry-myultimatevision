@@ -1,4 +1,5 @@
 const Line = require("./line");
+const Point = require("./point");
 
 const getSides = function(endA, endB) {
   const side1 = new Line(endA, { x: endA.x, y: endB.y });
@@ -51,6 +52,7 @@ class Rectangle {
 
   covers(point) {
     const { endA, endB } = this.diagnol;
+    if (!(point instanceof Point)) return false;
     return (
       isInRange([endA.x, endB.x], point.x) &&
       isInRange([endA.y, endB.y], point.y)
