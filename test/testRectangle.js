@@ -30,6 +30,12 @@ describe("Rectangle", function() {
       const rectangle2 = { diagnol: new Line({ x: 1, y: 2 }, { x: 4, y: 7 }) };
       assert.isFalse(rectangle1.isEqualTo(rectangle2));
     });
+
+    it("should give false when another diagnol of rectangle is given", function() {
+      const rectangle1 = new Rectangle({ x: 1, y: 2 }, { x: 4, y: 7 });
+      const rectangle2 = new Rectangle({ x: 4, y: 2 }, { x: 1, y: 7 });
+      assert.isTrue(rectangle1.isEqualTo(rectangle2));
+    });
   });
 
   describe("area", function() {

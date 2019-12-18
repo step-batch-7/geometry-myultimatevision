@@ -26,8 +26,16 @@ class Rectangle {
   }
 
   isEqualTo(rectangle) {
+    const { endA, endB } = rectangle.diagnol;
     if (!(rectangle instanceof Rectangle)) return false;
-    return this.diagnol.isEqualTo(rectangle.diagnol);
+    const anotherDiagnol = new Line(
+      { x: endA.x, y: endB.y },
+      { x: endB.x, y: endA.y }
+    );
+    return (
+      this.diagnol.isEqualTo(rectangle.diagnol) ||
+      this.diagnol.isEqualTo(anotherDiagnol)
+    );
   }
 
   get area() {
