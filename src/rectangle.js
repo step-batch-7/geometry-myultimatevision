@@ -26,8 +26,8 @@ class Rectangle {
   }
 
   isEqualTo(rectangle) {
-    const { endA, endB } = rectangle.diagnol;
     if (!(rectangle instanceof Rectangle)) return false;
+    const { endA, endB } = rectangle.diagnol;
     const anotherDiagnol = new Line(
       { x: endA.x, y: endB.y },
       { x: endB.x, y: endA.y }
