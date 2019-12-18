@@ -31,7 +31,7 @@ describe("Rectangle", function() {
       assert.isFalse(rectangle1.isEqualTo(rectangle2));
     });
 
-    it("should give false when another diagonal of rectangle is given", function() {
+    it("should give true when another diagonal of rectangle is given", function() {
       const rectangle1 = new Rectangle({ x: 1, y: 2 }, { x: 4, y: 7 });
       const rectangle2 = new Rectangle({ x: 4, y: 2 }, { x: 1, y: 7 });
       assert.isTrue(rectangle1.isEqualTo(rectangle2));
