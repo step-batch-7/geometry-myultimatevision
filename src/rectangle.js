@@ -17,41 +17,41 @@ const isInRange = function(range, number) {
 
 class Rectangle {
   constructor(endA, endB) {
-    this.diagnol = new Line(endA, endB);
+    this.diagonal = new Line(endA, endB);
   }
 
   toString() {
-    const { endA, endB } = this.diagnol;
+    const { endA, endB } = this.diagonal;
     return `[Rectangle (${endA.x},${endA.y}) to (${endB.x},${endB.y})]`;
   }
 
   isEqualTo(rectangle) {
     if (!(rectangle instanceof Rectangle)) return false;
-    const { endA, endB } = rectangle.diagnol;
-    const anotherDiagnol = new Line(
+    const { endA, endB } = rectangle.diagonal;
+    const anotherdiagonal = new Line(
       { x: endA.x, y: endB.y },
       { x: endB.x, y: endA.y }
     );
     return (
-      this.diagnol.isEqualTo(rectangle.diagnol) ||
-      this.diagnol.isEqualTo(anotherDiagnol)
+      this.diagonal.isEqualTo(rectangle.diagonal) ||
+      this.diagonal.isEqualTo(anotherdiagonal)
     );
   }
 
   get area() {
-    const { endA, endB } = this.diagnol;
+    const { endA, endB } = this.diagonal;
     const { side1, side2 } = getSides(endA, endB);
     return side1.length * side2.length;
   }
 
   get perimeter() {
-    const { endA, endB } = this.diagnol;
+    const { endA, endB } = this.diagonal;
     const { side1, side2 } = getSides(endA, endB);
     return 2 * (side1.length + side2.length);
   }
 
   hasPoint(point) {
-    const { endA, endB } = this.diagnol;
+    const { endA, endB } = this.diagonal;
     const sides = getSides(endA, endB);
     const keys = Object.keys(sides);
     const thisHasPoint = keys.some(key => sides[key].hasPoint(point));
@@ -59,7 +59,7 @@ class Rectangle {
   }
 
   covers(point) {
-    const { endA, endB } = this.diagnol;
+    const { endA, endB } = this.diagonal;
     if (!(point instanceof Point)) return false;
     return (
       isInRange([endA.x, endB.x], point.x) &&

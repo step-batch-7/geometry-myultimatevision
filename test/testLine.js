@@ -68,32 +68,32 @@ describe("Line", function() {
     });
   });
 
-  describe("isParrellel to", function() {
+  describe("isParallel to", function() {
     it("should give false if both end points are equal", function() {
       const line1 = new Line({ x: 3, y: 1 }, { x: 4, y: 2 });
       const line2 = new Line({ x: 3, y: 1 }, { x: 4, y: 2 });
       assert.isFalse(line1.isParallelTo(line2));
     });
 
-    it("should give true if both lines are parrallel to x-axis", function() {
+    it("should give true if both lines are parallel to x-axis", function() {
       const line1 = new Line({ x: 0, y: 0 }, { x: 0, y: 4 });
       const line2 = new Line({ x: 4, y: 0 }, { x: 4, y: 4 });
       assert.isTrue(line1.isParallelTo(line2));
     });
 
-    it("should give true if both lines are parrallel to Y-axis", function() {
+    it("should give true if both lines are parallel to Y-axis", function() {
       const line1 = new Line({ x: 0, y: 0 }, { x: 4, y: 0 });
       const line2 = new Line({ x: 0, y: 4 }, { x: 4, y: 4 });
       assert.isTrue(line1.isParallelTo(line2));
     });
 
-    it("should give true if both lines are parrallel to eachOther without parellel to any axis", function() {
+    it("should give true if both lines are parallel to eachOther without parallel to any axis", function() {
       const line1 = new Line({ x: 2, y: 0 }, { x: 0, y: 2 });
       const line2 = new Line({ x: 0, y: -2 }, { x: -2, y: 0 });
       assert.isTrue(line1.isParallelTo(line2));
     });
 
-    it("should give true if both lines are parrallel to Y-axis and slope is in negative", function() {
+    it("should give true if both lines are parallel to Y-axis and slope is in negative", function() {
       const line1 = new Line({ x: 0, y: 0 }, { x: 0, y: 4 });
       const line2 = new Line({ x: 1, y: 1 }, { x: 1, y: -3 });
       assert.isTrue(line1.isParallelTo(line2));
