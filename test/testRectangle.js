@@ -103,7 +103,7 @@ describe("Rectangle", function() {
       assert.isTrue(rectangle.covers(point1));
     });
 
-    it("should return false when point is inside the rectangle", function() {
+    it("should return false when point is outside the rectangle", function() {
       const rectangle = new Rectangle({ x: 3, y: 2 }, { x: 7, y: 4 });
       const point1 = new Point(8, 5);
       assert.isFalse(rectangle.covers(point1));

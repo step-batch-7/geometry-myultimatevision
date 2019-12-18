@@ -83,16 +83,11 @@ class Line {
     if (isNotInRange([0, 1], ratio)) return null;
     const x = getCoordinate(this.endA.x, this.endB.x, ratio);
     const y = getCoordinate(this.endA.y, this.endB.y, ratio);
-    const newPoint = new Point(x, y);
-    return newPoint;
+    return new Point(x, y);
   }
 
   findPointFromEnd(distance) {
-    const ratio = distance / this.length;
-    if (isNotInRange([0, 1], ratio)) return null;
-    const x = getCoordinate(this.endB.x, this.endA.x, ratio);
-    const y = getCoordinate(this.endB.y, this.endA.y, ratio);
-    return new Point(x, y);
+    return this.findPointFromStart(this.length - distance);
   }
 }
 
