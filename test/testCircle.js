@@ -112,6 +112,12 @@ describe("Circle", function() {
       const point = new Point(8, 5);
       assert.isFalse(circle.covers(point));
     });
+
+    it("should return false when given point is not an instance of Point", function() {
+      const circle = new Circle({ x: 0, y: 0 }, 7);
+      const point = { x: 5, y: 0 };
+      assert.isFalse(circle.covers(point));
+    });
   });
 
   describe("moveTo", function() {

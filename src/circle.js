@@ -31,6 +31,7 @@ class Circle {
   }
 
   covers(point) {
+    if (!(point instanceof Point)) return false;
     const distanceBetweenPointAndCenter = this.center.findDistanceTo(point);
     return distanceBetweenPointAndCenter < this.radius;
   }
