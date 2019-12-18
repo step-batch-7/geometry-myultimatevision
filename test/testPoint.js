@@ -1,6 +1,7 @@
 const Point = require("../src/point");
 const Line = require("../src/line");
 const Circle = require("../src/circle");
+const Rectangle = require("../src/rectangle");
 const assert = require("chai").assert;
 
 describe("point", function() {
@@ -120,6 +121,18 @@ describe("point", function() {
       const point = new Point(7, 5);
       const circle = new Circle({ x: 2, y: 2 }, 5);
       assert.isFalse(point.isOn(circle));
+    });
+
+    it("should give true when point is present on the side of Rectangle", function() {
+      const point = new Point(4, 6);
+      const rectangle = new Rectangle({ x: 1, y: 8 }, { x: 5, y: 6 });
+      assert.isTrue(point.isOn(rectangle));
+    });
+
+    it("should give true when point is not present on the Rectangle", function() {
+      const point = new Point(7, 5);
+      const rectangle = new Rectangle({ x: 2, y: 3 }, { x: 5, y: 7 });
+      assert.isFalse(point.isOn(rectangle));
     });
   });
 });
